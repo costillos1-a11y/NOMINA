@@ -441,6 +441,31 @@ tfoot td {
 .fee-summary b { color: var(--blue); font-size: 16px; white-space: nowrap; }
 .fee-summary .fee-net { background: #eaf3df; color: #405f13; }
 .fee-summary .fee-net b { color: #405f13; }
+
+/* Cuadrícula de diligenciamiento mensual: lectura rápida y edición en una sola fila. */
+.payroll-grid { overflow-x: auto; background: #fff; }
+.payroll-grid-head,
+.payroll-grid-row {
+  display: grid;
+  grid-template-columns: minmax(200px, 1.65fr) repeat(9, minmax(48px, .42fr)) minmax(105px, .85fr) minmax(105px, .85fr) minmax(115px, .95fr) minmax(155px, 1.2fr);
+  min-width: 1180px;
+}
+.payroll-grid-head { background: #eef5fa; color: #395a77; font-size: 11px; font-weight: bold; }
+.payroll-grid-head span { min-height: 56px; display: grid; place-items: center; padding: 7px 4px; text-align: center; border-right: 1px solid #dce7ef; }
+.payroll-grid-head span:first-child { justify-items: start; padding-left: 15px; }
+.payroll-grid-group { border-top: 1px solid #e2eaf1; }
+.payroll-grid-row > * { min-height: 82px; display: flex; align-items: center; justify-content: center; padding: 8px 5px; border-right: 1px solid #edf2f6; }
+.grid-person { display: grid !important; justify-content: start !important; align-content: center; gap: 3px; padding-left: 15px !important; }
+.grid-person b { font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.grid-person small { font-size: 11px; color: var(--muted); }
+.grid-input input { width: 100%; min-width: 0; border: 1px solid #cbdbe8; border-radius: 6px; padding: 9px 2px; text-align: center; color: var(--ink); font-size: 13px; }
+.grid-total { font-size: 13px; text-align: center; white-space: nowrap; }
+.grid-total.earned { color: var(--blue); background: #f4faff; }
+.grid-total.discount { color: #8b3b33; background: #fff7f6; }
+.grid-total.net { color: #176234; background: #eaf6e8; font-size: 14px; }
+.grid-note input { width: 100%; min-width: 0; border: 1px solid #d4e0ea; border-radius: 6px; padding: 9px; color: var(--ink); font: inherit; font-size: 12px; }
+.payroll-grid-footer { display: flex; align-items: center; gap: 20px; padding: 14px 16px; background: #f0f8f5; color: #486b28; font-size: 13px; }
+.payroll-grid-footer b { margin-left: auto; color: #176234; font-size: 16px; }
 .payroll-cards { display: grid; gap: 10px; padding: 12px; }
 .payroll-card { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 12px; align-items: center; padding: 12px; border: 1px solid #e2eaf1; border-radius: 9px; background: #fff; }
 .person b, .person span, .amounts span { display: block; }
