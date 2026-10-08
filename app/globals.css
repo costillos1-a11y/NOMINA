@@ -419,7 +419,7 @@ tfoot td {
 .danger { color: #a52b23; border-color: #e3b9b4; }
 .fees-table th { text-align: center; line-height: 1.15; }
 .fees-table td { padding: 8px 6px; text-align: center; font-size: 12px; }
-.fees-table .fee-person { min-width: 175px; text-align: left; }
+.fees-table .fee-person { min-width: 255px; text-align: left; }
 .fees-table .fee-person b, .fees-table .fee-person small { display: block; }
 .fees-table .fee-person small { margin-top: 4px; color: var(--muted); font-size: 10px; }
 .retention-cell { background: #fff8f7; }
