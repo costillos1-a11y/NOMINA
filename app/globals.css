@@ -169,6 +169,14 @@ h1 {
   color: var(--blue);
   background: transparent;
 }
+.period-input {
+  border: 0;
+  background: transparent;
+  color: var(--blue);
+  font: inherit;
+  font-weight: bold;
+  width: 100px;
+}
 .notice {
   font-size: 12px;
   color: var(--muted);
@@ -248,43 +256,46 @@ button:disabled {
   font-size: 12px;
 }
 .scroll {
-  overflow: auto;
+  overflow-x: hidden;
 }
 table {
   border-collapse: collapse;
   width: 100%;
-  min-width: 1200px;
   font-size: 12px;
+  table-layout: fixed;
 }
 th {
   background: #f0f5f8;
   color: #50677c;
   padding: 11px 8px;
   text-align: left;
-  white-space: nowrap;
+  white-space: normal;
   font-size: 11px;
 }
 td {
   border-top: 1px solid #edf1f5;
   padding: 0;
 }
+.payroll-table td:first-child { width: 16%; padding: 8px; font-weight: bold; }
+.payroll-table th { padding: 9px 4px; text-align: center; }
+.payroll-table td { text-align: center; overflow-wrap: anywhere; }
 td input {
   border: 0;
   width: 100%;
-  min-width: 94px;
+  min-width: 0;
   padding: 11px 8px;
   color: var(--ink);
   background: #fff;
   font-size: 12px;
 }
 td:first-child input {
-  min-width: 218px;
+  min-width: 0;
 }
 .result {
   font-weight: bold;
   color: var(--blue);
   padding: 11px 8px;
-  white-space: nowrap;
+  white-space: normal;
   background: #f8fbfe;
 }
 tfoot td {
@@ -370,13 +381,22 @@ tfoot td {
 }
 
 .quantity-input {
-  min-width: 54px !important;
-  width: 54px !important;
+  min-width: 38px !important;
+  width: 100% !important;
   text-align: center;
 }
 
 .salary-input {
-  min-width: 108px !important;
-  width: 108px !important;
+  min-width: 52px !important;
+  width: 100% !important;
   text-align: right;
 }
+.note-row td { background: #f8fbfe; padding: 7px 12px; text-align: left; }
+.note-row label { display: flex; gap: 10px; align-items: center; font-size: 11px; color: var(--muted); }
+.note-row input { flex: 1; border: 1px solid #dbe5ee; border-radius: 5px; padding: 7px; font: inherit; }
+.module-heading { display: flex; justify-content: space-between; gap: 18px; align-items: center; }
+.module-heading h2 { margin: 0; }
+.module-heading p { color: var(--muted); font-size: 13px; }
+.directory-table { min-width: 0; }
+.directory-table td { padding: 10px 8px; }
+.danger { color: #a52b23; border-color: #e3b9b4; }
