@@ -417,10 +417,13 @@ tfoot td {
 .novelties { display: grid; grid-template-columns: repeat(6, minmax(42px, 1fr)); gap: 6px; }
 .novelties label { color: #58708a; font-size: 10px; text-align: center; }
 .novelties input { width: 100%; margin-top: 4px; padding: 7px 2px; border: 1px solid #cddae7; border-radius: 5px; text-align: center; color: var(--ink); }
-.amounts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+.amounts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
 .amounts span { margin: 0; }
 .amounts b { display: block; color: var(--blue); font-size: 12px; white-space: nowrap; margin-top: 2px; }
 .amounts .net { padding: 5px 7px; border-radius: 5px; background: #eaf3df; }
+.amounts .deductions { padding: 5px 7px; border-radius: 5px; background: #fff5f4; color: #8b3b33; }
+.amounts em { display: inline-block; margin: 4px 4px 0 0; font-style: normal; font-size: 9px; }
+.amounts .deductions b { display: inline; margin-right: 4px; color: #8b3b33; font-size: 10px; }
 .card-note { grid-column: 1 / -1; display: flex; gap: 10px; align-items: center; color: var(--muted); font-size: 11px; }
 .card-note input { flex: 1; border: 1px solid #dbe5ee; border-radius: 5px; padding: 8px; font: inherit; }
 .payroll-total { display: flex; justify-content: space-between; padding: 14px 18px; background: #eaf3df; color: #405f13; }
