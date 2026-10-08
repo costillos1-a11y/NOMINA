@@ -417,7 +417,7 @@ tfoot td {
 .novelties { display: grid; grid-template-columns: repeat(6, minmax(42px, 1fr)); gap: 6px; }
 .novelties label { color: #58708a; font-size: 10px; text-align: center; }
 .novelties input { width: 100%; margin-top: 4px; padding: 7px 2px; border: 1px solid #cddae7; border-radius: 5px; text-align: center; color: var(--ink); }
-.amounts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; }
+.amounts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
 .amounts span { margin: 0; }
 .amounts b { display: block; color: var(--blue); font-size: 12px; white-space: nowrap; margin-top: 2px; }
 .amounts .net { padding: 5px 7px; border-radius: 5px; background: #eaf3df; }
