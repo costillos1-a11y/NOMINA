@@ -448,9 +448,9 @@ tfoot td {
 .payroll-card .person { grid-column: 1; grid-row: 2; padding: 10px 4px; }
 .payroll-card .person b { font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .payroll-card .person span { font-size: 12px; margin-top: 7px; }
-.payroll-card .novelties { grid-column: 1 / -1; grid-row: 1; grid-template-columns: repeat(9, 54px); gap: 7px; }
-.payroll-card .novelties label { font-size: 11px; white-space: nowrap; }
-.payroll-card .novelties input { width: 54px; font-size: 13px; }
+.payroll-card .novelties { grid-column: 1 / -1; grid-row: 1; grid-template-columns: repeat(9, 64px); gap: 8px; align-items: start; }
+.payroll-card .novelties label { min-height: 58px; font-size: 11px; line-height: 1.12; white-space: normal; }
+.payroll-card .novelties input { display: block; width: 58px; margin: 6px auto 0; font-size: 13px; }
 .payroll-card .amounts { grid-column: 2; grid-row: 2; }
 .payroll-card .card-note { grid-column: 1 / -1; grid-row: 3; font-size: 12px; }
 .card-note { grid-column: 1 / -1; display: flex; gap: 10px; align-items: center; color: var(--muted); font-size: 11px; }
