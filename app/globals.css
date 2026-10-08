@@ -417,6 +417,14 @@ tfoot td {
 .directory-table { min-width: 0; }
 .directory-table td { padding: 10px 8px; }
 .danger { color: #a52b23; border-color: #e3b9b4; }
+.fees-table th { text-align: center; line-height: 1.15; }
+.fees-table td { padding: 8px 6px; text-align: center; font-size: 12px; }
+.fees-table .fee-person { min-width: 175px; text-align: left; }
+.fees-table .fee-person b, .fees-table .fee-person small { display: block; }
+.fees-table .fee-person small { margin-top: 4px; color: var(--muted); font-size: 10px; }
+.retention-cell { background: #fff8f7; }
+.retention-cell input { display: block; margin: 0 auto 4px; }
+.retention-cell small { display: block; color: #8b3b33; font-size: 11px; font-weight: bold; white-space: nowrap; }
 .payroll-cards { display: grid; gap: 10px; padding: 12px; }
 .payroll-card { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 12px; align-items: center; padding: 12px; border: 1px solid #e2eaf1; border-radius: 9px; background: #fff; }
 .person b, .person span, .amounts span { display: block; }
