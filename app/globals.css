@@ -466,6 +466,24 @@ tfoot td {
 .grid-note input { width: 100%; min-width: 0; border: 1px solid #d4e0ea; border-radius: 6px; padding: 9px; color: var(--ink); font: inherit; font-size: 12px; }
 .payroll-grid-footer { display: flex; align-items: center; gap: 20px; padding: 14px 16px; background: #f0f8f5; color: #486b28; font-size: 13px; }
 .payroll-grid-footer b { margin-left: auto; color: #176234; font-size: 16px; }
+
+/* Fichas desplegables de colaboradores. */
+.employee-card { overflow: hidden; border: 1px solid #dde7ef; border-radius: 11px; background: #fff; }
+.employee-card.open { border-color: #a8c9ef; box-shadow: 0 5px 18px #07498e12; }
+.employee-card-head { width: 100%; display: grid; grid-template-columns: 44px minmax(240px, 1.25fr) minmax(200px, 1fr) 75px minmax(180px, .9fr) 22px; align-items: center; gap: 14px; border: 0; border-radius: 0; padding: 14px 16px; color: var(--ink); text-align: left; background: #fff; }
+.employee-card.open .employee-card-head { background: #f5faff; }
+.employee-initials { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: #e2effc; color: var(--blue); font-size: 13px; font-weight: bold; }
+.employee-main b, .employee-role b, .employee-salary b { display: block; font-size: 14px; }
+.employee-main small, .employee-role small, .employee-salary small { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; }
+.employee-status { justify-self: start; padding: 5px 9px; border-radius: 999px; background: #e9f6e9; color: #247343; font-size: 12px; font-weight: bold; }
+.chevron-up { transform: rotate(180deg); }
+.employee-details { display: grid; grid-template-columns: repeat(3, 1fr) auto; gap: 12px; padding: 14px 16px 16px 74px; border-top: 1px solid #deebf4; background: #fbfdff; }
+.employee-details section { padding: 12px; border-radius: 8px; background: #fff; border: 1px solid #e4edf4; }
+.employee-details h3 { margin: 0 0 9px; color: var(--blue); font-size: 13px; }
+.employee-details p { margin: 6px 0; color: #52677d; font-size: 12px; }
+.employee-actions { display: flex; flex-direction: column; justify-content: center; gap: 8px; border: 0 !important; background: transparent !important; }
+.employee-actions button { justify-content: center; white-space: nowrap; }
+@media (max-width: 900px) { .employee-card-head { grid-template-columns: 42px 1fr auto; } .employee-role, .employee-status, .employee-salary { display: none; } .employee-details { grid-template-columns: 1fr; padding-left: 16px; } .employee-actions { flex-direction: row; } }
 .payroll-cards { display: grid; gap: 10px; padding: 12px; }
 .payroll-card { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 12px; align-items: center; padding: 12px; border: 1px solid #e2eaf1; border-radius: 9px; background: #fff; }
 .person b, .person span, .amounts span { display: block; }
