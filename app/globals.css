@@ -421,9 +421,9 @@ tfoot td {
 .payroll-card { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 12px; align-items: center; padding: 12px; border: 1px solid #e2eaf1; border-radius: 9px; background: #fff; }
 .person b, .person span, .amounts span { display: block; }
 .person span, .amounts span { color: var(--muted); font-size: 11px; margin-top: 5px; }
-.novelties { display: grid; grid-template-columns: repeat(6, 52px); justify-content: center; gap: 5px; }
+.novelties { display: grid; grid-template-columns: repeat(5, 58px); justify-content: start; gap: 6px; }
 .novelties label { color: #58708a; font-size: 10px; text-align: center; }
-.novelties input { width: 52px; margin-top: 4px; padding: 7px 2px; border: 1px solid #cddae7; border-radius: 5px; text-align: center; color: var(--ink); }
+.novelties input { width: 58px; margin-top: 4px; padding: 7px 2px; border: 1px solid #cddae7; border-radius: 5px; text-align: center; color: var(--ink); }
 .amounts { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(255px, 1.2fr) minmax(210px, 1fr) minmax(155px, .72fr); gap: 9px; align-items: stretch; min-width: 0; }
 .amounts span { margin: 0; }
 .amounts b { display: block; color: var(--blue); font-size: 12px; white-space: nowrap; margin-top: 2px; }
@@ -444,6 +444,15 @@ tfoot td {
 .net-summary { display: grid; place-content: center; text-align: center; background: #eaf3df; color: #405f13; }
 .net-summary > b { font-size: 16px; white-space: nowrap; margin: 4px 0; }
 .net-summary small { font-size: 10px; white-space: nowrap; }
+.payroll-card { grid-template-columns: 220px minmax(0, 1fr); align-items: start; padding: 14px; }
+.payroll-card .person { grid-column: 1; grid-row: 2; padding: 10px 4px; }
+.payroll-card .person b { font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.payroll-card .person span { font-size: 12px; margin-top: 7px; }
+.payroll-card .novelties { grid-column: 1 / -1; grid-row: 1; grid-template-columns: repeat(9, 54px); gap: 7px; }
+.payroll-card .novelties label { font-size: 11px; white-space: nowrap; }
+.payroll-card .novelties input { width: 54px; font-size: 13px; }
+.payroll-card .amounts { grid-column: 2; grid-row: 2; }
+.payroll-card .card-note { grid-column: 1 / -1; grid-row: 3; font-size: 12px; }
 .card-note { grid-column: 1 / -1; display: flex; gap: 10px; align-items: center; color: var(--muted); font-size: 11px; }
 .card-note input { flex: 1; border: 1px solid #dbe5ee; border-radius: 5px; padding: 8px; font: inherit; }
 .payroll-total { display: flex; justify-content: space-between; padding: 14px 18px; background: #eaf3df; color: #405f13; }
