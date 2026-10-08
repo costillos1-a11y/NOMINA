@@ -411,12 +411,12 @@ tfoot td {
 .directory-table td { padding: 10px 8px; }
 .danger { color: #a52b23; border-color: #e3b9b4; }
 .payroll-cards { display: grid; gap: 10px; padding: 12px; }
-.payroll-card { display: grid; grid-template-columns: 160px minmax(320px, 1.35fr) minmax(290px, 1fr); gap: 12px; align-items: center; padding: 12px; border: 1px solid #e2eaf1; border-radius: 9px; background: #fff; }
+.payroll-card { display: grid; grid-template-columns: 160px 342px minmax(360px, 1fr); gap: 12px; align-items: center; padding: 12px; border: 1px solid #e2eaf1; border-radius: 9px; background: #fff; }
 .person b, .person span, .amounts span { display: block; }
 .person span, .amounts span { color: var(--muted); font-size: 11px; margin-top: 5px; }
-.novelties { display: grid; grid-template-columns: repeat(6, minmax(42px, 1fr)); gap: 6px; }
+.novelties { display: grid; grid-template-columns: repeat(6, 52px); justify-content: center; gap: 5px; }
 .novelties label { color: #58708a; font-size: 10px; text-align: center; }
-.novelties input { width: 100%; margin-top: 4px; padding: 7px 2px; border: 1px solid #cddae7; border-radius: 5px; text-align: center; color: var(--ink); }
+.novelties input { width: 52px; margin-top: 4px; padding: 7px 2px; border: 1px solid #cddae7; border-radius: 5px; text-align: center; color: var(--ink); }
 .amounts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
 .amounts span { margin: 0; }
 .amounts b { display: block; color: var(--blue); font-size: 12px; white-space: nowrap; margin-top: 2px; }
