@@ -53,6 +53,7 @@ export default function Home() {
   const [sessionEmail, setSessionEmail] = useState<string | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [message, setMessage] = useState(""); const [authError, setAuthError] = useState("");
+  const [currentPassword, setCurrentPassword] = useState(""); const [newPassword, setNewPassword] = useState(""); const [confirmPassword, setConfirmPassword] = useState("");
   const [importing, setImporting] = useState(false);
   const importInput = useRef<HTMLInputElement>(null);
   const supabase = useMemo(() => {
@@ -172,6 +173,17 @@ export default function Home() {
     const { error } = await supabase.from("payroll_entries").upsert(rows.map(row => ({ period_id: id, employee_id: row.id, days_in_period: row.days, unpaid_leave_days: row.unpaid, sick_days_1_2: row.sick12, sick_days_3_plus: row.sick3, daytime_overtime_hours: row.overtime, other_deductions: row.other, notes: row.note })), { onConflict: "period_id,employee_id" });
     setSaving(false); setMessage(error ? "No se pudieron guardar las novedades." : `Novedades y notas guardadas para ${period}.`);
   };
+  const changePassword = async (event: FormEvent) => {
+    event.preventDefault();
+    if (!supabase || !sessionEmail) return;
+    if (newPassword.length < 8) { setMessage("La nueva contraseña debe tener al menos 8 caracteres."); return; }
+    if (newPassword !== confirmPassword) { setMessage("La confirmación de la nueva contraseña no coincide."); return; }
+    const { error: verifyError } = await supabase.auth.signInWithPassword({ email: sessionEmail, password: currentPassword });
+    if (verifyError) { setMessage("La contraseña actual no es correcta."); return; }
+    const { error } = await supabase.auth.updateUser({ password: newPassword });
+    if (error) { setMessage("No fue posible actualizar la contraseña."); return; }
+    setCurrentPassword(""); setNewPassword(""); setConfirmPassword(""); setMessage("Contraseña actualizada correctamente.");
+  };
   const labor = rows; const fees = workers.filter(item => item.category === "HONORARIOS"); const supports = workers.filter(item => item.category === "APOYO_OTRA_SEDE");
   const payrollTotal = labor.reduce((sum, row) => sum + calculate(row).net, 0);
   const feeTotal = fees.reduce((sum, item) => sum + item.monthly_salary * (quantities[item.id] ?? (item.payment_mode === "MENSUAL" ? 1 : 0)), 0);
@@ -209,7 +221,7 @@ export default function Home() {
   {view === "supports" && <SupportsTable rows={supports} />}
   {view === "costs" && <CostsTable rows={labor} total={employerCost} />}
   {view === "reports" && <section className="module-panel"><h2>Relación mensual</h2><p>Descarga la nómina laboral de la sede seleccionada en Excel, con logo y valores calculados.</p><button className="primary" onClick={exportWorkbook}><Download size={17} /> Descargar Excel de nómina</button></section>}
-  {view === "settings" && <section className="module-panel"><h2>Parámetros de control</h2><div className="settings-grid"><span>Salud trabajador <b>4%</b></span><span>Pensión trabajador <b>4%</b></span><span>Pensión empleador <b>12%</b></span><span>ARL referencial <b>0,522%</b></span><span>Caja compensación <b>4%</b></span><span>Hora extra diurna <b>125%</b></span></div><p>Los parámetros normativos deben ser revisados por el área contable antes de cada período.</p></section>}
+  {view === "settings" && <section className="module-panel"><h2>Parámetros de control</h2><div className="settings-grid"><span>Salud trabajador <b>4%</b></span><span>Pensión trabajador <b>4%</b></span><span>Pensión empleador <b>12%</b></span><span>ARL referencial <b>0,522%</b></span><span>Caja compensación <b>4%</b></span><span>Hora extra diurna <b>125%</b></span></div><p>Los parámetros normativos deben ser revisados por el área contable antes de cada período.</p><form className="password-form" onSubmit={changePassword}><h2>Seguridad de mi cuenta</h2><p>Cambia solo la contraseña de la cuenta con la que iniciaste sesión.</p><label>Contraseña actual<input type="password" value={currentPassword} onChange={e => setCurrentPassword(e.target.value)} required /></label><label>Nueva contraseña<input type="password" minLength={8} value={newPassword} onChange={e => setNewPassword(e.target.value)} required /></label><label>Confirmar nueva contraseña<input type="password" minLength={8} value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required /></label><button className="primary" type="submit"><Save size={16} /> Cambiar contraseña</button></form></section>}
   {showWorkerForm && <WorkerForm draft={newWorker} onChange={setNewWorker} onCancel={() => setShowWorkerForm(false)} onSubmit={saveNewWorker} />}
   <p className="legal">Herramienta de control interno. Antes del pago, valide retenciones, PILA e incapacidades especiales.</p></section></main>;
 }
