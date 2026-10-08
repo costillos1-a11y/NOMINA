@@ -96,11 +96,30 @@ export default function Home() {
         const name = text(row[0]);
         if (name) rows.push({ branch: "MANIZALES", full_name: name, monthly_salary: numeric(row[1]), transport_allowance: 0, category: "APOYO_OTRA_SEDE", payment_mode: "REFERENCIA", role_title: text(row[2]) || null, notes: text(row[3]) || "Apoyo de otra sede; no genera pago automático", active: true });
       });
+      // Flexible import for a simple Excel with columns such as Colaborador, Vinculación and Salario.
+      if (!rows.length) Object.entries(book.Sheets).forEach(([sheetName, sheet]) => {
+        const grid = XLSX.utils.sheet_to_json<unknown[]>(sheet, { header: 1, defval: "" });
+        const normalized = (value: unknown) => text(value).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        const headerRow = grid.findIndex(row => row.some(cell => ["colaborador", "nombre", "prestador", "profesional"].some(word => normalized(cell).includes(word))));
+        if (headerRow < 0) return;
+        const headers = grid[headerRow].map(normalized);
+        const nameIndex = headers.findIndex(cell => ["colaborador", "nombre", "prestador", "profesional"].some(word => cell.includes(word)));
+        const relationIndex = headers.findIndex(cell => cell.includes("vincul") || cell.includes("tipo") || cell.includes("categoria"));
+        const salaryIndex = headers.findIndex(cell => cell.includes("salario") || cell.includes("valor") || cell.includes("tarifa") || cell.includes("pago"));
+        grid.slice(headerRow + 1).forEach(line => {
+          const name = text(line[nameIndex]); const relation = normalized(relationIndex >= 0 ? line[relationIndex] : sheetName); const salary = numeric(line[salaryIndex]);
+          if (!name || normalized(name).includes("total") || (!salary && !relation.includes("confirm"))) return;
+          const category: Category = relation.includes("nomina") || relation.includes("laboral") ? "LABORAL" : relation.includes("servic") || relation.includes("honorar") || relation.includes("medic") ? "HONORARIOS" : "APOYO_OTRA_SEDE";
+          const role = category === "HONORARIOS" && /dr\.?|medic|neumo/i.test(name) ? "Prestador médico" : null;
+          rows.push({ branch: "MANIZALES", full_name: name, monthly_salary: salary, transport_allowance: category === "LABORAL" && salary <= 3501810 ? 249095 : 0, category, payment_mode: category === "APOYO_OTRA_SEDE" ? "REFERENCIA" : "MENSUAL", role_title: role, notes: category === "APOYO_OTRA_SEDE" ? "Valor o vínculo por confirmar; no genera pago automático" : null, active: true });
+        });
+      });
       if (!rows.length) throw new Error("No encontré las hojas esperadas ni registros válidos en el archivo.");
-      const { error } = await supabase.from("employees").upsert(rows, { onConflict: "branch,full_name" });
+      const uniqueRows = Array.from(new Map(rows.map(row => [`${row.branch}-${row.full_name}`, row])).values());
+      const { error } = await supabase.from("employees").upsert(uniqueRows, { onConflict: "branch,full_name" });
       if (error) throw error;
       await loadWorkers();
-      setMessage(`Excel importado: ${rows.length} personas clasificadas en Manizales.`);
+      setMessage(`Excel importado: ${uniqueRows.length} personas clasificadas en Manizales.`);
     } catch (error) { setMessage(error instanceof Error ? `No se pudo importar: ${error.message}` : "No se pudo importar el archivo."); }
     finally { setImporting(false); }
   };
