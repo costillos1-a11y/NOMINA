@@ -186,6 +186,13 @@ button {
   align-items: center;
   cursor: pointer;
 }
+button:disabled {
+  cursor: wait;
+  opacity: .65;
+}
+.file-input {
+  display: none;
+}
 .primary {
   background: var(--blue);
   color: #fff;
