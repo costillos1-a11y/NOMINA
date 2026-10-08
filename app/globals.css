@@ -349,6 +349,13 @@ tfoot td {
   border-radius: 16px;
   box-shadow: 0 12px 35px #16304d14;
 }
+.login-logo {
+  display: block;
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 24px;
+}
 .login-card .brand {
   padding: 0 0 24px;
 }
