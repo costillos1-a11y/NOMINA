@@ -70,6 +70,31 @@ nav a.active {
   color: var(--blue);
   font-weight: bold;
 }
+
+nav button {
+  border: 0;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  padding: 11px 12px;
+  border-radius: 8px;
+  color: #52677d;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+nav button:hover,
+nav button.active {
+  background: #e9f1fb;
+  color: var(--blue);
+  font-weight: bold;
+}
+
+.brand-logo {
+  width: 180px;
+  height: auto;
+  object-fit: contain;
+}
 .security {
   margin-top: auto;
   background: #eff6e5;
