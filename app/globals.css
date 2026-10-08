@@ -410,6 +410,30 @@ tfoot td {
 .directory-table { min-width: 0; }
 .directory-table td { padding: 10px 8px; }
 .danger { color: #a52b23; border-color: #e3b9b4; }
+.payroll-cards { display: grid; gap: 10px; padding: 12px; }
+.payroll-card { display: grid; grid-template-columns: 160px minmax(320px, 1.35fr) minmax(290px, 1fr); gap: 12px; align-items: center; padding: 12px; border: 1px solid #e2eaf1; border-radius: 9px; background: #fff; }
+.person b, .person span, .amounts span { display: block; }
+.person span, .amounts span { color: var(--muted); font-size: 11px; margin-top: 5px; }
+.novelties { display: grid; grid-template-columns: repeat(6, minmax(42px, 1fr)); gap: 6px; }
+.novelties label { color: #58708a; font-size: 10px; text-align: center; }
+.novelties input { width: 100%; margin-top: 4px; padding: 7px 2px; border: 1px solid #cddae7; border-radius: 5px; text-align: center; color: var(--ink); }
+.amounts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; }
+.amounts span { margin: 0; }
+.amounts b { display: block; color: var(--blue); font-size: 12px; white-space: nowrap; margin-top: 2px; }
+.amounts .net { padding: 5px 7px; border-radius: 5px; background: #eaf3df; }
+.card-note { grid-column: 1 / -1; display: flex; gap: 10px; align-items: center; color: var(--muted); font-size: 11px; }
+.card-note input { flex: 1; border: 1px solid #dbe5ee; border-radius: 5px; padding: 8px; font: inherit; }
+.payroll-total { display: flex; justify-content: space-between; padding: 14px 18px; background: #eaf3df; color: #405f13; }
+.directory-cards { display: grid; gap: 8px; }
+.directory-card { display: grid; grid-template-columns: minmax(200px, 1.5fr) 160px 120px 150px auto; align-items: center; gap: 12px; padding: 13px 0; border-top: 1px solid var(--line); font-size: 13px; }
+.directory-card b, .directory-card span { display: block; }
+.directory-card div:first-child span { color: var(--muted); font-size: 12px; margin-top: 3px; }
+.directory-card div:last-child { display: flex; gap: 7px; }
+.benefits-panel { margin-top: 18px; padding: 18px; border: 1px solid #d7e5c0; border-radius: 10px; background: #fbfdf7; }
+.benefits-panel h2 { margin: 0; font-size: 17px; color: #405f13; }
+.benefits-panel p { margin: 6px 0 12px; color: var(--muted); font-size: 12px; }
+.benefits-panel > div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid #e0ead2; font-size: 13px; }
+.benefits-total { color: #405f13; }
 .modal-backdrop { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 22px; background: #16304d80; }
 .worker-form { width: min(100%, 520px); padding: 24px; border-radius: 14px; background: #fff; box-shadow: 0 16px 50px #0004; }
 .worker-form h2 { margin: 0; }
@@ -417,3 +441,4 @@ tfoot td {
 .worker-form label { display: grid; gap: 6px; margin-top: 12px; color: var(--ink); font-size: 13px; font-weight: bold; }
 .worker-form input, .worker-form select { width: 100%; border: 1px solid #cddae7; border-radius: 7px; padding: 10px; font: inherit; color: var(--ink); background: #fff; }
 .form-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 20px; }
+@media (max-width: 1100px) { .payroll-card { grid-template-columns: 145px 1fr; } .amounts, .card-note { grid-column: 1 / -1; } .directory-card { grid-template-columns: 1fr 140px 115px; } .directory-card span:nth-of-type(2), .directory-card div:last-child { grid-column: auto; } }
