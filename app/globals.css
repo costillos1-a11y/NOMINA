@@ -276,9 +276,16 @@ td {
   border-top: 1px solid #edf1f5;
   padding: 0;
 }
-.payroll-table td:first-child { width: 16%; padding: 8px; font-weight: bold; }
-.payroll-table th { padding: 9px 4px; text-align: center; }
-.payroll-table td { text-align: center; overflow-wrap: anywhere; }
+.payroll-table th:first-child { width: 14%; }
+.payroll-table th:nth-child(2) { width: 8%; }
+.payroll-table th:nth-child(3), .payroll-table th:nth-child(4), .payroll-table th:nth-child(5), .payroll-table th:nth-child(6), .payroll-table th:nth-child(7) { width: 5%; }
+.payroll-table th:nth-child(8), .payroll-table th:nth-child(14) { width: 8%; }
+.payroll-table th:nth-child(9), .payroll-table th:nth-child(10) { width: 7%; }
+.payroll-table th:nth-child(11), .payroll-table th:nth-child(12) { width: 6%; }
+.payroll-table th:nth-child(13) { width: 5%; }
+.payroll-table td:first-child { padding: 8px; font-weight: bold; overflow-wrap: anywhere; }
+.payroll-table th { padding: 9px 3px; text-align: center; }
+.payroll-table td { text-align: center; font-size: 10px; }
 td input {
   border: 0;
   width: 100%;
@@ -295,7 +302,9 @@ td:first-child input {
   font-weight: bold;
   color: var(--blue);
   padding: 11px 8px;
-  white-space: normal;
+  white-space: nowrap;
+  font-size: 10px;
+  letter-spacing: -0.25px;
   background: #f8fbfe;
 }
 tfoot td {
@@ -391,6 +400,7 @@ tfoot td {
   width: 100% !important;
   text-align: right;
 }
+.deduction { white-space: nowrap; font-size: 10px; letter-spacing: -0.25px; }
 .note-row td { background: #f8fbfe; padding: 7px 12px; text-align: left; }
 .note-row label { display: flex; gap: 10px; align-items: center; font-size: 11px; color: var(--muted); }
 .note-row input { flex: 1; border: 1px solid #dbe5ee; border-radius: 5px; padding: 7px; font: inherit; }
